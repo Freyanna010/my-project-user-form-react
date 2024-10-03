@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
-
 import { v4 as uuidv4 } from "uuid";
 import TextField from "../TextField";
 import Button from "../Button";
+import classes from  "./Form.module.scss"
 
 const Form: FC = () => {
   // TODO: здесь должен быть обьект со всеми полями ввода?
@@ -35,7 +35,7 @@ const Form: FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={classes.form}>
       <TextField
         name={"lastName"}
         error={error && "Поле является обязательным"}
@@ -74,6 +74,7 @@ const Form: FC = () => {
         placeholder={formValue.fatherName}
         className={"long"}
       />
+      <div className={classes.shortInput}>
       <TextField
         name={"male"}
         // labelPosition={"top"}
@@ -96,7 +97,9 @@ const Form: FC = () => {
         required={true}
         placeholder={formValue.birthDate}
         className={"short"}
-      />
+      />      
+      </div>
+      <div className={classes.shortInput}>
       <TextField
         name={"phone"}
         error={error && "Поле является обязательным"}
@@ -124,6 +127,9 @@ const Form: FC = () => {
         placeholder={formValue.email}
         className={"short"}
       />
+      
+      </div>
+     
       <TextField
         name={"address"}
         id={uuidv4()}
@@ -149,7 +155,7 @@ const Form: FC = () => {
         className={"long"}
       />
 {/* TODO:не покрасилась */}
-      <Button type={"submit"} className={"primary"}> 
+      <Button type={"submit"}>
         Сохранить
       </Button>
     </form>
