@@ -10,6 +10,7 @@ button {
     width: calc(50% - 10px);
     background-color: rgb(6, 167, 86);
     color: #ffff;
+    margin-left: 50%;
     &:hover {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4)
     }
