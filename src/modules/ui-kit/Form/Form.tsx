@@ -1,11 +1,10 @@
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TextField from "../TextField";
 import Button from "../Button";
-import classes from  "./Form.module.scss"
+import classes from "./Form.module.scss";
 
 const Form: FC = () => {
-  // TODO: здесь должен быть обьект со всеми полями ввода?
   // TODO: типизировтаь и вынести объект
   const [formValue, setFormValue] = useState<any>({
     lastName: "",
@@ -18,11 +17,12 @@ const Form: FC = () => {
     address: "",
     nameEmployer: "",
   });
-
+  // TODO:для валидации
   const [error, setError] = useState<boolean | string>(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    //TODO:типизировать
     setFormValue((prev: any) => ({ ...prev, [name]: value }));
   };
 
@@ -36,128 +36,124 @@ const Form: FC = () => {
 
   return (
     <form onSubmit={handleSubmit} className={classes.form}>
+      <h2>Информация о сотруднике</h2>
       <TextField
         name={"lastName"}
         error={error && "Поле является обязательным"}
         id={uuidv4()}
         label={"Фамилия"}
-        // labelPosition={"top"} //TODO: ругается на название
         onChange={handleChange}
-        // onBlur = {hadleBlur}  //TODO: пыталась логику перемещения сделать через стили
-        // onFocus = {hadleFocus}
+        // onBlur = {handleBlur}  //TODO:нужен?
+        // onFocus = {handleFocus}
         required={true}
-        placeholder={formValue.lastName}
+        value={formValue.lastName}
         className={"long"}
+        placeholder={""}
       />
       <TextField
-        name={"FirstName"}
+        name={"firstName"}
         error={error && "Поле является обязательным"}
         id={uuidv4()}
         label={"Имя"}
-        // labelPosition={"top"}
         onChange={handleChange}
-        // onBlur = {hadleBlur}
-        // onFocus = {hadleFocus}
+        // onBlur = {handleBlur}
+        // onFocus = {handleFocus}
         required={true}
-        placeholder={formValue.firstName}
+        value={formValue.firstName}
         className={"long"}
+        placeholder={""}
       />
       <TextField
         name={"fatherName"}
         id={uuidv4()}
         label={"Отчество"}
-        // labelPosition={"top"}
         onChange={handleChange}
-        // onBlur = {hadleBlur}
-        // onFocus = {hadleFocus}
+        // onBlur = {handleBlur}
+        // onFocus = {handleFocus}
         required={false}
-        placeholder={formValue.fatherName}
+        value={formValue.fatherName}
         className={"long"}
+        placeholder={""}
       />
       <div className={classes.shortInput}>
-      <TextField
-        name={"male"}
-        // labelPosition={"top"}
-        onChange={handleChange}
-        // onBlur = {hadleBlur}
-        // onFocus = {hadleFocus}
-        required={false}
-        placeholder={formValue.male}
-        className={"short"}
-      />
-      <TextField
-        name={"birthDate"}
-        error={error && "Поле является обязательным"}
-        id={uuidv4()}
-        label={"Дата рождения"}
-        // labelPosition={"top"}
-        onChange={handleChange}
-        // onBlur = {hadleBlur}
-        // onFocus = {hadleFocus}
-        required={true}
-        placeholder={formValue.birthDate}
-        className={"short"}
-      />      
+        <TextField
+          name={"male"}
+          onChange={handleChange}
+          // onBlur = {handleBlur}
+          // onFocus = {handleFocus}
+          required={false}
+          value={formValue.male}
+          className={"short"}
+        />
+        <TextField
+          name={"birthDate"}
+          error={error && "Поле является обязательным"}
+          id={uuidv4()}
+          label={"Дата рождения"}
+          onChange={handleChange}
+          // onBlur = {handleBlur}
+          // onFocus = {handleFocus}
+          required={true}
+          value={formValue.birthDate}
+          className={"short"}
+          placeholder={""}
+        />
       </div>
       <div className={classes.shortInput}>
-      <TextField
-        name={"phone"}
-        error={error && "Поле является обязательным"}
-        id={uuidv4()}
-        label={"Мобильный телефон"}
-        // labelPosition={"top"}
-        onChange={handleChange}
-        // onBlur = {hadleBlur}
-        // onFocus = {hadleFocus}
-        required={true}
-        placeholder={formValue.phone}
-        className={"short"}
-      />
+        <TextField
+          name={"phone"}
+          error={error && "Поле является обязательным"}
+          id={uuidv4()}
+          label={"Мобильный телефон"}
+          onChange={handleChange}
+          // onBlur = {hadleBlur}
+          // onFocus = {hadleFocus}
+          required={true}
+          value={formValue.phone}
+          className={"short"}
+          placeholder={""}
+        />
 
-      <TextField
-        name={"email"}
-        error={error && "Введен некоректный адрес почты"}
-        id={uuidv4()}
-        label={"Email(необязательно)"}
-        // labelPosition={"top"}
-        onChange={handleChange}
-        // onBlur = {hadleBlur}
-        // onFocus = {hadleFocus}
-        required={true}
-        placeholder={formValue.email}
-        className={"short"}
-      />
-      
+        <TextField
+          name={"email"}
+          error={error && "Введен некоректный адрес почты"}
+          id={uuidv4()}
+          label={"Email (необязательно)"}
+          onChange={handleChange}
+          // onBlur = {handleBlur}
+          // onFocus = {handleFocus}
+          required={true}
+          value={formValue.email}
+          className={"short"}
+          placeholder={""}
+        />
       </div>
-     
+
       <TextField
         name={"address"}
         id={uuidv4()}
         label={"Адрес постоянной регистрации"}
-        // labelPosition={"top"}
         onChange={handleChange}
-        // onBlur = {hadleBlur}
-        // onFocus = {hadleFocus}
+        // onBlur = {handleBlur}
+        // onFocus = {handleFocus}
         required={false}
-        placeholder={formValue.address}
+        value={formValue.address}
         className={"long"}
+        placeholder={""}
       />
       <TextField
         name={"nameEmployer"}
         id={uuidv4()}
         label={"Название работодателя"}
-        // labelPosition={"top"}
         onChange={handleChange}
-        // onBlur = {hadleBlur}
-        // onFocus = {hadleFocus}
+        // onBlur = {handleBlur}
+        // onFocus = {handleFocus}
         required={false}
-        placeholder={formValue.nameEmployer}
+        value={formValue.nameEmployer}
         className={"long"}
+        placeholder={""}
       />
-{/* TODO:не покрасилась */}
-      <Button type={"submit"}>
-        Сохранить
-      </Button>
+      <Button type={"submit"}>Сохранить</Button>
     </form>
   );
 };

@@ -1,4 +1,4 @@
-export type LabelPosition = 'floating' | 'left' | 'top';
+export type LabelPosition = "floating" | "left" | "top";
 
 export type TextFieldProps = {
   /**
@@ -23,7 +23,7 @@ export type TextFieldProps = {
    * Маска для ввода.
    */
   mask?: string | RegExp;
-/**
+  /**
    * Имя компонента.
    */
   name?: string;
@@ -46,11 +46,11 @@ export type TextFieldProps = {
   /**
    * Обязательно для заполнения.
    * @default false
-   */  
+   */
   required?: boolean;
   /**
    * Значение элемента.
    */
-value?: string | number;
-className: "long"  | "short";
+  value?: string | number;
+  className: "long" | "short";
 };
