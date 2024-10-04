@@ -21,13 +21,19 @@ const Form: FC = () => {
     nameEmployer: "",
   });
   // TODO:для валидации
-  const [error, setError] = useState<boolean | string>(false);
+  const [error, setError] = useState({
+    lastName: false,
+    firstName: false,
+    birthDate: false,
+    phone: false,
+    email: false,
+  });
   const genderOptions = [
     { value: "Мужской", label: "Мужской" },
     { value: "Женский", label: "Женский" },
   ];
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     //TODO:типизировать
     setFormValue((prev: any) => ({ ...prev, [name]: value }));
@@ -116,24 +122,28 @@ const Form: FC = () => {
           label="Мобильный телефон"
           className="short"
           placeholder=""
+          required={true}
           type="tel"
         /> */}
-        <InputMask
-          mask="+7 (999) 999-99-99"
-          value={formValue.phone}
-          onChange={handleChange}
-        >
-          {(inputProps: InputProps) => (
-            <TextField
-              name="phone"
-              id={uuidv4()}
-              label="Мобильный телефон"
-              className="short"
-              placeholder=""
-              type="tel"
-            />
-          )}
-        </InputMask>
+<InputMask
+  mask="+7 (999) 999-99-99"
+  value={formValue.phone}
+  onChange={handleChange}
+>
+  {(inputProps: any) => (
+    <TextField
+      {...inputProps}  // Передаем все необходимые пропсы
+      name="phone"
+      id={uuidv4()}
+      label="Мобильный телефон"
+      className="short"
+      placeholder=""
+      required={true}
+      type="tel"
+      onChange={handleChange}
+    />
+  )}
+</InputMask>
 
         <TextField
           name={"email"}
