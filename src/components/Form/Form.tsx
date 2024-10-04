@@ -4,7 +4,7 @@ import TextField from "../../modules/ui-kit/TextField";
 import Button from "../../modules/ui-kit/Button";
 import classes from "./Form.module.scss";
 import SelectBox from "../../modules/ui-kit/SelectBox";
-import InputMask from 'react-input-mask';
+import InputMask from "react-input-mask";
 
 const Form: FC = () => {
   // TODO: типизировтаь и вынести объект
@@ -107,17 +107,35 @@ const Form: FC = () => {
           type={"number"}
         />
       </div>
-      <div className={classes.shortInput}>
 
-            <TextField              
-              name="phone"
+      <div className={classes.shortInput}>
+        {/* <TextField
+          name="phone"
+          id={uuidv4()}
+          label="Мобильный телефон"
+          className="short"
+          placeholder=""
+          type="tel"
+        /> */}
+<InputMask
+      mask="+7 (999) 999-99-99"
+      value={formValue.phone}
+      onChange={handleChange}
+    >
+      {(inputProps: React.InputHTMLAttributes<HTMLInputElement>) => (
+               <TextField
+               name="phone"
+               id={uuidv4()}
+               label="Мобильный телефон"
+               className="short"
+               placeholder=""
+               type="tel"
+             
             
-              id={uuidv4()}
-              label="Мобильный телефон"
-              className="short"
-              placeholder=""
-              type="tel"
-            />
+             
+             />
+      )}
+    </InputMask>
 
         <TextField
           name={"email"}
@@ -133,8 +151,7 @@ const Form: FC = () => {
           placeholder={""}
           type={"string"}
         />
-      </div>
-
+      </div>                  
       <TextField
         name={"address"}
         id={uuidv4()}
