@@ -1,8 +1,10 @@
 import React, { FC, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import TextField from "../TextField";
-import Button from "../Button";
+import TextField from "../../modules/ui-kit/TextField";
+import Button from "../../modules/ui-kit/Button";
 import classes from "./Form.module.scss";
+import SelectBox from "../../modules/ui-kit/SelectBox";
+import InputMask from 'react-input-mask';
 
 const Form: FC = () => {
   // TODO: типизировтаь и вынести объект
@@ -10,7 +12,7 @@ const Form: FC = () => {
     lastName: "",
     firstName: "",
     fatherName: "",
-    male: "man",
+    gender: "man",
     birthDate: "",
     phone: "",
     email: "",
@@ -19,6 +21,10 @@ const Form: FC = () => {
   });
   // TODO:для валидации
   const [error, setError] = useState<boolean | string>(false);
+  const genderOptions = [
+    { value: "Мужской", label: "Мужской" },
+    { value: "Женский", label: "Женский" },
+  ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -49,6 +55,7 @@ const Form: FC = () => {
         value={formValue.lastName}
         className={"long"}
         placeholder={""}
+        type={"string"}
       />
       <TextField
         name={"firstName"}
@@ -62,6 +69,7 @@ const Form: FC = () => {
         value={formValue.firstName}
         className={"long"}
         placeholder={""}
+        type={"string"}
       />
       <TextField
         name={"fatherName"}
@@ -74,16 +82,15 @@ const Form: FC = () => {
         value={formValue.fatherName}
         className={"long"}
         placeholder={""}
+        type={"string"}
       />
       <div className={classes.shortInput}>
-        <TextField
-          name={"male"}
+        <SelectBox
+          name="gender"
+          value={formValue.gender}
           onChange={handleChange}
-          // onBlur = {handleBlur}
-          // onFocus = {handleFocus}
-          required={false}
-          value={formValue.male}
-          className={"short"}
+          options={genderOptions}
+          label="Пол"
         />
         <TextField
           name={"birthDate"}
@@ -97,22 +104,20 @@ const Form: FC = () => {
           value={formValue.birthDate}
           className={"short"}
           placeholder={""}
+          type={"number"}
         />
       </div>
       <div className={classes.shortInput}>
-        <TextField
-          name={"phone"}
-          error={error && "Поле является обязательным"}
-          id={uuidv4()}
-          label={"Мобильный телефон"}
-          onChange={handleChange}
-          // onBlur = {hadleBlur}
-          // onFocus = {hadleFocus}
-          required={true}
-          value={formValue.phone}
-          className={"short"}
-          placeholder={""}
-        />
+
+            <TextField              
+              name="phone"
+            
+              id={uuidv4()}
+              label="Мобильный телефон"
+              className="short"
+              placeholder=""
+              type="tel"
+            />
 
         <TextField
           name={"email"}
@@ -126,6 +131,7 @@ const Form: FC = () => {
           value={formValue.email}
           className={"short"}
           placeholder={""}
+          type={"string"}
         />
       </div>
 
@@ -140,6 +146,7 @@ const Form: FC = () => {
         value={formValue.address}
         className={"long"}
         placeholder={""}
+        type={"string"}
       />
       <TextField
         name={"nameEmployer"}
@@ -152,8 +159,9 @@ const Form: FC = () => {
         value={formValue.nameEmployer}
         className={"long"}
         placeholder={""}
+        type={"string"}
       />
-      <Button type={"submit"}>Сохранить</Button>
+      <Button>Сохранить</Button>
     </form>
   );
 };

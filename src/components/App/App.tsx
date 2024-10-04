@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Form from "./modules/ui-kit/Form";
+import Form from "../Form";
 
 function App() {
   return (

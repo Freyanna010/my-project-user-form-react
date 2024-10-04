@@ -1,0 +1,30 @@
+.selectBox {
+  position: relative;
+  width: calc(50% - 10px);
+
+  label {
+    position: absolute;
+    // padding-left: 10px;
+    margin-bottom: 5px;
+    top: 10%;
+    left: 10px;
+    pointer-events: none;
+    color: #999;
+    font-size: 12px;
+  }
+  select {
+    width: 100%;
+    padding-left: 6px;
+    padding-top: 10px;
+    font-size: 12px;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 4px;
+    height: 47px;
+  }
+
+  &.error select {
+    border-color: #e74c3c;
+  }
+}

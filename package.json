@@ -10,8 +10,10 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "clsx": "^2.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-input-mask": "^2.0.4",
     "react-scripts": "5.0.1",
     "sass": "^1.79.4",
     "typescript": "^4.4.2",
@@ -22,7 +24,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "prettify": "prettier . --write"
   },
   "eslintConfig": {
     "extends": [
@@ -44,8 +49,10 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
+    "@types/react-input-mask": "^3.0.5",
     "@types/uuid": "^10.0.0",
     "eslint": "^9.11.1",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-react": "^7.37.1",
     "globals": "^15.10.0",
     "prettier": "3.3.3",

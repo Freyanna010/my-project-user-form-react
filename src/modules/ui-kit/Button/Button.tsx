@@ -1,11 +1,11 @@
 import React, { FC } from "react";
-import { ButtonProps } from "./ButtonType";
+import { ButtonProps } from "./Button.types";
 import classes from "./Button.module.scss";
 
 const Button: FC<ButtonProps> = ({ children }, props) => {
   return (
-    <button type={props.type} className={classes[props.className]}>
-      <p>{children}</p>
+    <button type={props.type} className={classes.button}>
+      {children}
     </button>
   );
 };
