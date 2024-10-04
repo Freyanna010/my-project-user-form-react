@@ -20,6 +20,7 @@ const Form: FC = () => {
     address: "",
     nameEmployer: "",
   });
+  
   // TODO:для валидации
   const [error, setError] = useState({
     lastName: false,
@@ -28,6 +29,7 @@ const Form: FC = () => {
     phone: false,
     email: false,
   });
+  
   const genderOptions = [
     { value: "Мужской", label: "Мужской" },
     { value: "Женский", label: "Женский" },
