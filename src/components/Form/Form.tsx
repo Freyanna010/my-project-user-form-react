@@ -20,7 +20,7 @@ const Form: FC = () => {
     address: "",
     nameEmployer: "",
   });
-  
+
   // TODO:для валидации
   const [error, setError] = useState({
     lastName: false,
@@ -37,7 +37,7 @@ const Form: FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    //TODO:типизировать
+    //TODO:типизировать?
     setFormValue((prev: any) => ({ ...prev, [name]: value }));
   };
 
@@ -45,7 +45,9 @@ const Form: FC = () => {
     e.preventDefault();
     if (!error) {
       alert("Форма валидна, отправляется запрос");
+      //TODO:сбросить поля так?
       setFormValue(null);
+      //TODO:сбросить ошибку
     }
   };
 
