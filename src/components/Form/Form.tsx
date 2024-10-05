@@ -102,6 +102,7 @@ const Form: FC = () => {
           onChange={handleChange}
           options={genderOptions}
           label="Пол"
+          error={error && "Поле является обязательным"}
         />
         <TextField
           name={"birthDate"}
@@ -136,7 +137,7 @@ const Form: FC = () => {
 >
   {(inputProps: any) => (
     <TextField
-      {...inputProps}  // Передаем все необходимые пропсы
+      {...inputProps}
       name="phone"
       id={uuidv4()}
       label="Мобильный телефон"

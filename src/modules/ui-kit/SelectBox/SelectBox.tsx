@@ -8,9 +8,10 @@ const SelectBox: FC<SelectBoxProps> = ({
   onChange,
   options,
   label,
+  error
 }) => {
   return (
-    <div className={classes.selectBox}>
+    <di className={error ? classes.errorInput : ""}>
       <label htmlFor={name}>{label}:</label>
       <select name={name} value={value} onChange={onChange}>
         <option value="" disabled>
@@ -22,7 +23,7 @@ const SelectBox: FC<SelectBoxProps> = ({
           </option>
         ))}
       </select>
-    </div>
+    </di>
   );
 };
 

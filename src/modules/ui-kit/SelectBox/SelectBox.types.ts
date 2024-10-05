@@ -6,4 +6,6 @@ export type SelectBoxProps = {
   onChange?(event: React.ChangeEvent<HTMLSelectElement>): void
   options: OptionType[];
   label: string;
+  error: string | boolean
+  
 };

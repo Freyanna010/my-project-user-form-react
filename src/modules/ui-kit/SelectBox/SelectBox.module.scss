@@ -4,7 +4,6 @@
 
   label {
     position: absolute;
-    // padding-left: 10px;
     margin-bottom: 5px;
     top: 10%;
     left: 10px;
@@ -24,7 +23,7 @@
     height: 47px;
   }
 
-  &.error select {
+  .errorSelectBox {
     border-color: #e74c3c;
   }
 }
