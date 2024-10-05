@@ -24,8 +24,8 @@
     }
 
     &:focus {
-      border: none;
-      outline: 1px solid #44b766;
+      border: none; 
+      outline: 1px solid #44b766; 
     }
   }
 
@@ -43,12 +43,10 @@
     font-size: 14px;
   }
 
-
-}
-
-.errorMessage {
-  position: absolute;
-  color: red;
-  font-size: 9px;
-  text-align: left;
+  .errorMessage {
+    color: red;
+    margin-top: 2px;
+    font-size: 12px;
+    text-align: left;
+  }
 }

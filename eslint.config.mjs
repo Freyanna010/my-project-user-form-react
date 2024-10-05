@@ -9,4 +9,11 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
+  {
+    rules: {
+      "arrow-body-style": ["error", "as-needed"],
+      "react/jsx-curly-brace-presence": ["error", { "props": "never" }],
+      "semi": ["error", "always"]
+    }
+  }
 ];

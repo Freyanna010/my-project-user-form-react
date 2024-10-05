@@ -15,17 +15,16 @@ const TextField: FC<TextFieldProps> = (props) => {
   } = props;
 
   return (
-    
     <div className={clsx(classes.component, className)}>
       <input
         className={clsx(classes.input, error && classes.input_error)}
-        onChange={(event) => onChange?.(event.target.value)}
+        onChange={onChange}
         value={value}
         placeholder=""
         {...otherInputProps}
       />
       {label && <label htmlFor={id} className={classes.label}>{label}</label>}
-      {error && <div className={classes.errorMessage}>{error}</div>}
+      {error && <p className={classes.errorMessage}>{error}</p>}
     </div>
   );
 };
