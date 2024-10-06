@@ -20,6 +20,8 @@ const Form: FC = () => {
     setFormValue((prevValue) => ({ ...prevValue, [name]: value }));
     setError(initialError);
   };
+  
+ // birthDate: birthDate === null //TODO: для календаря
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,7 +31,7 @@ const Form: FC = () => {
       lastName: formValue.lastName.trim() === "",
       firstName: formValue.firstName.trim() === "",
       birthDate: formValue.birthDate.trim() === "",
-      // birthDate: birthDate === null //TODO: для календаря
+     
       phone: formValue.phone.trim() === "",
       email: !isValidEmail(formValue.email),
     });
