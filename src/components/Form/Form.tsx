@@ -11,7 +11,8 @@ import {
 } from "./constants";
 import { isEmpty, isValidEmail } from "./validation";
 import { FormError, FormValues } from "./Form.type";
-import { DatePicker } from 'antd';
+import Date from "../../modules/ui-kit/Date/Date";
+
 
 
 const Form: FC = () => {
@@ -83,10 +84,10 @@ const Form: FC = () => {
           label="Пол"
         />
 
-          <DatePicker
-      name="birthDate" 
-      onChange={handleDateChange}
-      style={{ width: '100%' }}/>
+        <Date
+          // name="birthDate"
+          onChange={handleDateChange}
+           />
 
       </div>
       <div className={classes.shortInput}>
