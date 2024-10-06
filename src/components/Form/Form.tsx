@@ -10,7 +10,14 @@ import { initialValue } from "./initialForm";
 const Form: FC = () => {
   const [formValue, setFormValue] = useState(initialValue);
 
-  const [error, setError] = useState(false);
+  //TODO: типизировать
+  const [error, setError] = useState<any>({
+    lastName: false,
+    firstName: false,
+    birthDate: false,
+    phone: false,
+    email: false,
+  });
 
   const genderOptions = [
     { value: "male", label: "Мужской" },
@@ -19,16 +26,33 @@ const Form: FC = () => {
 
   const handleChange = (value: string) => {
     setFormValue((prevValue) => ({ ...prevValue, value }));
-    setError(false);
+    // setError(false);
   };
+
+  const validateTextField = () => {
+    const newErrors = {
+      lastName: formValue.lastName.trim() === "",   
+      firstName: formValue.firstName.trim() === "", 
+      birthDate: formValue.birthDate.trim() === "", 
+      email: !isValidEmail(formValue.email),        
+    };
+    //TODO:перезаписать 
+    setError({...newErrors}); 
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (isValidEmail(formValue.email) && isValidTextField(formValue)) {
-      alert("Форма валидна, отправляется запрос");
-    } else {
-      setError(true);
-    }
+    //TODO: нужны какие-то условия
+    validateTextField()
+    // TODO: выдает 
+    console.log(error);
+    
+    // if (isValidEmail(formValue.email) && isValidTextField(formValue)) {
+    //   alert("Форма валидна, отправляется запрос");
+    // } else {
+
+      
+    // }
   };
 
   return (
@@ -37,14 +61,14 @@ const Form: FC = () => {
       <div className={classes.formGroup}></div>
       <TextField
         name="lastName"
-        error={error && FIELD_ERROR_MESSAGE}
+        error={error.lastName && FIELD_ERROR_MESSAGE}
         label="Фамилия"
         onChange={handleChange}
         type="string"
       />
       <TextField
         name="firstName"
-        error={error && FIELD_ERROR_MESSAGE}
+        error={error.firstName && FIELD_ERROR_MESSAGE}
         label="Имя"
         onChange={handleChange}
         type="string"
@@ -65,7 +89,7 @@ const Form: FC = () => {
         />
         <TextField
           name="birthDate"
-          error={error && FIELD_ERROR_MESSAGE}
+          error={error.birthDate && FIELD_ERROR_MESSAGE}
           label="Дата рождения"
           onChange={handleChange}
           className="short"
@@ -76,7 +100,7 @@ const Form: FC = () => {
       <div className={classes.shortInput}>
         <TextField
           name="email"
-          error={error && FIELD_ERROR_MESSAGE_EMAIL}
+          error={error.email && FIELD_ERROR_MESSAGE_EMAIL}
           className="short"
           type="string"
         />

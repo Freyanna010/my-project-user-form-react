@@ -6,3 +6,20 @@ export const isValidTextField = (formValue: any) =>
   formValue.lastName !== "" &&
   formValue.firstName !== "" &&
   formValue.birthDate !== "";
+
+
+const error = {
+lastName: false,
+firstName: false,
+birthDate: false,
+phone: false,
+email: false,
+}
+
+
+
+
+
+
+
+
