@@ -3,7 +3,7 @@
     lastName: "",
     firstName: "",
     fatherName: "",
-    gender: "man",
+    gender: "",
     birthDate: "",
     phone: "",
     email: "",

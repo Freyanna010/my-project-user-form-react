@@ -6,10 +6,10 @@ import Select from "../../modules/ui-kit/Select";
 import { FIELD_ERROR_MESSAGE, FIELD_ERROR_MESSAGE_EMAIL } from "./constants";
 import { isValidEmail } from "./validation";
 import { initialError, initialValue } from "./initialForm";
-import { FormError } from "./Form.type";
+import { FormError, FormValues } from "./Form.type";
 
 const Form: FC = () => {
-  const [formValue, setFormValue] = useState(initialValue); 
+  const [formValue, setFormValue] = useState<FormValues>(initialValue);
   const [error, setError] = useState<FormError>(initialError);
   const genderOptions = [
     { value: "male", label: "Мужской" },
@@ -36,19 +36,16 @@ const Form: FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    //TODO: нужны какие-то условия
+    // validateTextField();
     setError({
       lastName: formValue.lastName.trim() === "",
       firstName: formValue.firstName.trim() === "",
       birthDate: formValue.birthDate.trim() === "",
-      // birthDate: birthDate === null //TODO: для календаряпше
+      // birthDate: birthDate === null //TODO: для календаря
       phone: formValue.phone.trim() === "",
       email: !isValidEmail(formValue.email),
     });
-
-    //TODO: нужны какие-то условия
-    // validateTextField();
-    // TODO: выдает все поля false
-    console.log(error);
   };
 
   return (
