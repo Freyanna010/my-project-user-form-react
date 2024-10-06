@@ -5,28 +5,18 @@ import classes from "./Form.module.scss";
 import Select from "../../modules/ui-kit/Select";
 import { FIELD_ERROR_MESSAGE, FIELD_ERROR_MESSAGE_EMAIL } from "./constants";
 import { isValidEmail } from "./validation";
-import { initialValue } from "./initialForm";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import ruLocale from "date-fns/locale/ru";
+import { initialError, initialValue } from "./initialForm";
+import { FormError } from "./Form.type";
 
 const Form: FC = () => {
-  const [formValue, setFormValue] = useState(initialValue);
-  //TODO: типизировать, вынести
-  const [error, setError] = useState<any>({
-    lastName: false,
-    firstName: false,
-    birthDate: false,
-    phone: false,
-    email: false,
-  });
+  const [formValue, setFormValue] = useState(initialValue); 
+  const [error, setError] = useState<FormError>(initialError);
   const genderOptions = [
     { value: "male", label: "Мужской" },
     { value: "female", label: "Женский" },
   ];
-  const [birthDate, setBirthDate] = useState<Date | null>(null);
 
+  // TODO: если более очевидно прердать
   // const validateTextField = () => {
   //   const newErrors = {
   //     lastName: formValue.lastName.trim() === "",
@@ -41,24 +31,19 @@ const Form: FC = () => {
 
   const handleChange = (value: string) => {
     setFormValue((prevValue) => ({ ...prevValue, value }));
-    setError({
-      lastName: false,
-      firstName: false,
-      birthDate: false,
-      phone: false,
-      email: false,
-    });
+    setError(initialError);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-setError({
+    setError({
       lastName: formValue.lastName.trim() === "",
       firstName: formValue.firstName.trim() === "",
-      birthDate: birthDate === null,
+      birthDate: formValue.birthDate.trim() === "",
+      // birthDate: birthDate === null //TODO: для календаряпше
       phone: formValue.phone.trim() === "",
       email: !isValidEmail(formValue.email),
-    })
+    });
 
     //TODO: нужны какие-то условия
     // validateTextField();
