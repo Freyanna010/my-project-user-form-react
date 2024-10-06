@@ -4,7 +4,7 @@ import Button from "../../modules/ui-kit/Button";
 import classes from "./Form.module.scss";
 import Select from "../../modules/ui-kit/Select";
 import { FIELD_ERROR_MESSAGE, FIELD_ERROR_MESSAGE_EMAIL } from "./constants";
-import { isValidEmail, isValidTextField } from "./validation";
+import { isValidEmail} from "./validation";
 import { initialValue } from "./initialForm";
 
 const Form: FC = () => {
@@ -26,6 +26,7 @@ const Form: FC = () => {
 
   const handleChange = (value: string) => {
     setFormValue((prevValue) => ({ ...prevValue, value }));
+    
     // setError(false);
   };
 
@@ -37,14 +38,16 @@ const Form: FC = () => {
       email: !isValidEmail(formValue.email),        
     };
     //TODO:перезаписать 
-    setError({...newErrors}); 
+    setError(newErrors); 
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+
     //TODO: нужны какие-то условия
-    validateTextField()
-    // TODO: выдает 
+    // validateTextField()
+    // TODO: выдает все поля false
     console.log(error);
     
     // if (isValidEmail(formValue.email) && isValidTextField(formValue)) {
