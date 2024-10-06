@@ -16,28 +16,15 @@ const Form: FC = () => {
     { value: "female", label: "Женский" },
   ];
 
-  // TODO: если более очевидно прердать
-  // const validateTextField = () => {
-  //   const newErrors = {
-  //     lastName: formValue.lastName.trim() === "",
-  //     firstName: formValue.firstName.trim() === "",
-  //     birthDate: birthDate === null,
-  //     phone: formValue.phone.trim() === "",
-  //     email: !isValidEmail(formValue.email),
-  //   };
-  //   //TODO: тут не работает:
-  //   setError({ ...newErrors });
-  // };
-
-  const handleChange = (value: string) => {
-    setFormValue((prevValue) => ({ ...prevValue, value }));
+  const handleChange = (name: string, value: string) => {
+    setFormValue((prevValue) => ({ ...prevValue, [name]: value }));
     setError(initialError);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     //TODO: нужны какие-то условия
-    // validateTextField();
+   
     setError({
       lastName: formValue.lastName.trim() === "",
       firstName: formValue.firstName.trim() === "",

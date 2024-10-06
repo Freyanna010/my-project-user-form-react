@@ -11,6 +11,7 @@ const TextField: FC<TextFieldProps> = (props) => {
     className,
     onChange,
     value,
+    name,
     ...otherInputProps
   } = props;
 
@@ -19,7 +20,7 @@ const TextField: FC<TextFieldProps> = (props) => {
     <div className={clsx(classes.component, className)}>
       <input
         className={clsx(classes.input, error && classes.input_error)}
-        onChange={(event) => onChange?.(event.target.value)}
+        onChange={(event) => onChange?.(name, event.target.value)}
         value={value}
         placeholder=""
         {...otherInputProps}
