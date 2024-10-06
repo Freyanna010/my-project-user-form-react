@@ -1,16 +1,16 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import TextField from "../../modules/ui-kit/TextField";
 import Button from "../../modules/ui-kit/Button";
 import classes from "./Form.module.scss";
 import Select from "../../modules/ui-kit/Select";
 import { FIELD_ERROR_MESSAGE, FIELD_ERROR_MESSAGE_EMAIL } from "./constants";
-import { isValidEmail} from "./validation";
+import { isValidEmail } from "./validation";
 import { initialValue } from "./initialForm";
 
 const Form: FC = () => {
   const [formValue, setFormValue] = useState(initialValue);
 
-  //TODO: типизировать
+  //TODO: типизировать, вынести
   const [error, setError] = useState<any>({
     lastName: false,
     firstName: false,
@@ -26,35 +26,39 @@ const Form: FC = () => {
 
   const handleChange = (value: string) => {
     setFormValue((prevValue) => ({ ...prevValue, value }));
-    
-    // setError(false);
+
+    setError({
+      lastName: false,
+      firstName: false,
+      birthDate: false,
+      phone: false,
+      email: false,
+    });
   };
 
   const validateTextField = () => {
     const newErrors = {
-      lastName: formValue.lastName.trim() === "",   
-      firstName: formValue.firstName.trim() === "", 
-      birthDate: formValue.birthDate.trim() === "", 
-      email: !isValidEmail(formValue.email),        
+      lastName: formValue.lastName.trim() === "",
+      firstName: formValue.firstName.trim() === "",
+      birthDate: formValue.birthDate.trim() === "",
+      phone: formValue.phone.trim() === "",
+      email: !isValidEmail(formValue.email),
     };
-    //TODO:перезаписать 
-    setError(newErrors); 
-  }
+    //TODO: тут не работает:
+    setError(newErrors);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-
     //TODO: нужны какие-то условия
-    // validateTextField()
+    validateTextField();
     // TODO: выдает все поля false
     console.log(error);
-    
+
     // if (isValidEmail(formValue.email) && isValidTextField(formValue)) {
     //   alert("Форма валидна, отправляется запрос");
     // } else {
 
-      
     // }
   };
 
