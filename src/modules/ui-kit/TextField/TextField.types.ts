@@ -3,9 +3,9 @@ export type TextFieldProps = {
   id?: string;
   label?: React.ReactNode;
   mask?: string | RegExp;
-  name?: string;
+  name: string;
   onBlur?(event: React.FocusEvent<HTMLInputElement>): void;
-  onChange?(value: string): void;
+  onChange?(name: string, value: string): void;
   onFocus?(event: React.FocusEvent<HTMLInputElement>): void;
   value?: string | number;
   className?: string;
