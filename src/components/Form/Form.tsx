@@ -82,13 +82,7 @@ const Form: FC = () => {
           options={genderOptions}
           label="Пол"
         />
-        {/* <TextField
-          name="birthDate"
-          error={error.birthDate && FIELD_ERROR_MESSAGE}
-          label="Дата рождения"
-          onChange={(value: string) => handleChange("birthDate", value)}
-          mask="date"
-        /> */}
+
           <DatePicker
       name="birthDate" 
       onChange={handleDateChange}
