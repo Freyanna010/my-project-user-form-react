@@ -7,9 +7,9 @@ import { FIELD_ERROR_MESSAGE, FIELD_ERROR_MESSAGE_EMAIL } from "./constants";
 import { isValidEmail } from "./validation";
 import { initialValue } from "./initialForm";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers"
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import ruLocale from 'date-fns/locale/ru';
+import { DatePicker } from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import ruLocale from "date-fns/locale/ru";
 
 const Form: FC = () => {
   const [formValue, setFormValue] = useState(initialValue);
@@ -27,18 +27,17 @@ const Form: FC = () => {
   ];
   const [birthDate, setBirthDate] = useState<Date | null>(null);
 
-
-  const validateTextField = () => {
-    const newErrors = {
-      lastName: formValue.lastName.trim() === "",
-      firstName: formValue.firstName.trim() === "",
-      birthDate: birthDate === null,
-      phone: formValue.phone.trim() === "",
-      email: !isValidEmail(formValue.email),
-    };
-    //TODO: тут не работает:
-    setError(newErrors);
-  };
+  // const validateTextField = () => {
+  //   const newErrors = {
+  //     lastName: formValue.lastName.trim() === "",
+  //     firstName: formValue.firstName.trim() === "",
+  //     birthDate: birthDate === null,
+  //     phone: formValue.phone.trim() === "",
+  //     email: !isValidEmail(formValue.email),
+  //   };
+  //   //TODO: тут не работает:
+  //   setError({ ...newErrors });
+  // };
 
   const handleChange = (value: string) => {
     setFormValue((prevValue) => ({ ...prevValue, value }));
@@ -51,15 +50,18 @@ const Form: FC = () => {
     });
   };
 
-  const handleDateChange = (date: Date | null) => {
-    setBirthDate(date);
-  };
-
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+setError({
+      lastName: formValue.lastName.trim() === "",
+      firstName: formValue.firstName.trim() === "",
+      birthDate: birthDate === null,
+      phone: formValue.phone.trim() === "",
+      email: !isValidEmail(formValue.email),
+    })
+
     //TODO: нужны какие-то условия
-    validateTextField();
+    // validateTextField();
     // TODO: выдает все поля false
     console.log(error);
   };
@@ -96,28 +98,14 @@ const Form: FC = () => {
           options={genderOptions}
           label="Пол"
         />
-        {/* <TextField
+        <TextField
           name="birthDate"
           error={error.birthDate && FIELD_ERROR_MESSAGE}
           label="Дата рождения"
           onChange={handleChange}
           className="short"
           type="number"
-        /> */}
-{/* 
-<LocalizationProvider dateAdapter={AdapterDateFns}> */}
-          <DatePicker
-            label="Дата рождения"
-            value={birthDate}
-            onChange={handleDateChange}
-            name="birthDate"
-            // fullWidth={true}
-            // error={error.birthDate  && FIELD_ERROR_MESSAGE}
-            components={{ 
-              TextField: TextField 
-            }} 
-          />
-        {/* </LocalizationProvider> */}
+        />
       </div>
 
       <div className={classes.shortInput}>
