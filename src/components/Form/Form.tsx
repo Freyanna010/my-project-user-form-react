@@ -84,8 +84,7 @@ const Form: FC = () => {
           label="Пол"
         />
 
-        <Date
-          // name="birthDate"
+        <Date         
           onChange={handleDateChange}
            />
 

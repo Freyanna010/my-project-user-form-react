@@ -8,8 +8,7 @@ const Date: FC<DateProps>  = ({ onChange }) => {
   return (
     <div className={classes.customDatePicker} >
     <DatePicker      
-      onChange={onChange}
- 
+      onChange={onChange} 
     />
   </div>
   );
