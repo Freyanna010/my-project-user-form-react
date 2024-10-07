@@ -1,0 +1,49 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles/vars.scss";
+
+.component {
+  position: relative;
+  width: 100%;
+
+  .input {
+    @include base-field;
+
+    padding-bottom: 0;
+
+    &_error {
+      border: 1px solid red;
+    }
+
+    &:focus + .label,
+    &:not(:placeholder-shown) + .label {
+      top: 10px;
+      font-size: 12px;
+    }
+
+    &:focus {
+      border: none;
+      outline: 1px solid $base-color;
+    }
+  }
+
+  .label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #999;
+    transition: 0.2s ease all;
+    transition:
+      top 0.2s ease,
+      font-size 0.2s ease;
+    font-size: 14px;
+  }
+}
+
+.errorMessage {
+  position: absolute;
+  color: red;
+  font-size: 9px;
+  text-align: left;
+}

@@ -1,0 +1,65 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles/vars.scss";
+
+.component {
+  position: relative;
+  width: 100%;
+
+  .label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .select {
+    @include base-field;
+
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .arrow {
+    margin-left: 10px;
+  }
+
+  .options {
+    position: absolute;
+    top: 75%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    z-index: 1000;
+    max-height: 150px;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 10px;
+      cursor: pointer;
+      text-align: left;
+
+      &:hover {
+        background-color: $base-color;
+      }
+    }
+  }
+
+  .value {
+    padding-top: 8px;
+    font-size: 14px;
+  }
+
+  .label {
+    position: absolute;
+    top: 25%;
+    left: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #999;
+    font-size: 12px;
+  }
+}

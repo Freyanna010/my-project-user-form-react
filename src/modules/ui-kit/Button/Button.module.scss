@@ -1,0 +1,21 @@
+@import "../../../styles/vars.scss";
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  text-transform: uppercase;
+  width: calc(50% - 10px);
+  height: 47px;
+  background-color: $base-color;
+  color: #ffff;
+  align-self: flex-end;
+  transition: box-shadow 0.3s;
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+  cursor: pointer;
+}
