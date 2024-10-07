@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import { Option, SelectProps } from "./Select.types";
-import TopBottomArrow from '../../icons/TopBottomArrow';
+import TopBottomArrow from "../../icons/TopBottomArrow";
 import classes from "./Select.module.scss";
 
 const Select: FC<SelectProps> = ({ options, label, value, onChange }) => {
@@ -13,7 +13,10 @@ const Select: FC<SelectProps> = ({ options, label, value, onChange }) => {
   };
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
+    if (
+      selectRef.current &&
+      !selectRef.current.contains(event.target as Node)
+    ) {
       setIsOpen(false);
     }
   };
@@ -28,8 +31,13 @@ const Select: FC<SelectProps> = ({ options, label, value, onChange }) => {
   return (
     <div className={classes.component} ref={selectRef}>
       <label className={classes.label}>{label}</label>
-      <div className={classes.select} onClick={() => setIsOpen((prev) => !prev)}>
-        <span className={classes.value}>{options.find((option) => option.value === value)?.label}</span>
+      <div
+        className={classes.select}
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
+        <span className={classes.value}>
+          {options.find((option) => option.value === value)?.label}
+        </span>
         <TopBottomArrow />
       </div>
       {isOpen && (

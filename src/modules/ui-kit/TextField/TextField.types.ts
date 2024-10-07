@@ -2,7 +2,7 @@ export type TextFieldProps = {
   error?: boolean | string;
   id?: string;
   label?: React.ReactNode;
-  mask?: 'phone' | 'date';
+  mask?: "phone" | "date";
   name?: string;
   onBlur?(event: React.FocusEvent<HTMLInputElement>): void;
   onChange?(value: string): void;

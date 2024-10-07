@@ -1,16 +1,13 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles/vars.scss";
+
 .component {
   position: relative;
   width: 100%;
 
   .input {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    box-sizing: border-box;
-    background-color: #f0f0f0;
-    border: none;
-    border-radius: 4px;
-    height: 48px;
+    @include base-field;
+
     padding-bottom: 0;
 
     &_error {
@@ -25,7 +22,7 @@
 
     &:focus {
       border: none;
-      outline: 1px solid #44b766;
+      outline: 1px solid $base-color;
     }
   }
 
@@ -42,8 +39,6 @@
       font-size 0.2s ease;
     font-size: 14px;
   }
-
-
 }
 
 .errorMessage {

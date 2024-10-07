@@ -12,8 +12,8 @@ export default [
   {
     rules: {
       "arrow-body-style": ["error", "as-needed"],
-      "react/jsx-curly-brace-presence": ["error", { "props": "never" }],
-      "semi": ["error", "always"]
-    }
-  }
+      "react/jsx-curly-brace-presence": ["error", { props: "never" }],
+      semi: ["error", "always"],
+    },
+  },
 ];

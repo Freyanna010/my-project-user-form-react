@@ -21,4 +21,3 @@ export const INITIAL_ERROR = {
   phone: false,
   email: false,
 };
-

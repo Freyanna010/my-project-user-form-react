@@ -1,3 +1,5 @@
+@import "../../../styles/vars.scss";
+
 .button {
   display: flex;
   justify-content: center;
@@ -8,12 +10,12 @@
   text-transform: uppercase;
   width: calc(50% - 10px);
   height: 47px;
-  background-color: #44b766;
+  background-color: $base-color;
   color: #ffff;
-  // margin-left: 50%;
   align-self: flex-end;
   transition: box-shadow 0.3s;
   &:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   }
+  cursor: pointer;
 }

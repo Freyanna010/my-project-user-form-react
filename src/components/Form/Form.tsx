@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import TextField from "../../modules/ui-kit/TextField";
 import Button from "../../modules/ui-kit/Button";
 import classes from "./Form.module.scss";
@@ -11,9 +11,7 @@ import {
 } from "./constants";
 import { isEmpty, isValidEmail } from "./validation";
 import { FormError, FormValues } from "./Form.type";
-import Date from "../../modules/ui-kit/Date/Date";
-
-
+import DatePicker from "../../modules/ui-kit/DatePicker";
 
 const Form: FC = () => {
   const [formValue, setFormValue] = useState<FormValues>(INITIAL_FORM_VALUE);
@@ -26,9 +24,6 @@ const Form: FC = () => {
   const handleChange = (name: keyof typeof formValue, value: string) => {
     setFormValue((prevValue) => ({ ...prevValue, [name]: value }));
     setError(INITIAL_ERROR);
-  };
-  const handleDateChange = (date: any, dateString: string) => {
-    handleChange('birthDate', date);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -75,7 +70,7 @@ const Form: FC = () => {
         onChange={(value: string) => handleChange("fatherName", value)}
         type="string"
       />
-      <div className={classes.shortInput}>
+      <div className={classes.shortInputContainer}>
         <Select
           name="gender"
           value={formValue.gender}
@@ -84,12 +79,14 @@ const Form: FC = () => {
           label="Пол"
         />
 
-        <Date         
-          onChange={handleDateChange}
-           />
-
+        <DatePicker
+          name="birthDate"
+          placeholder="Дата рождения"
+          onChange={(date) => handleChange("birthDate", date?.toString())}
+          error={error.birthDate && FIELD_ERROR_MESSAGE}
+        />
       </div>
-      <div className={classes.shortInput}>
+      <div className={classes.shortInputContainer}>
         <TextField
           name="email"
           error={error.email && FIELD_ERROR_MESSAGE_EMAIL}
